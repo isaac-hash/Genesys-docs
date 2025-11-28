@@ -1,161 +1,287 @@
 ---
 title: Installation
-description: This guide covers the installation of Documents and how to edit your new project.
-keywords: ["installation", "github", "node", "guide", "nextjs", "documents"]
+description: Learn how to install ROS 2 and set up the Genesys Robotics Framework on your system.
+keywords: ["ros2", "installation", "genesys", "robotics framework", "ubuntu", "setup"]
 ---
 
-To install and edit the Documents, you need to have several prerequisites in place. Here's a list of all the essential pre-requisites
-for setting up and working on this project.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frubixvi%2Frubix-documents&project-name=my-documents&repository-name=my-documents&demo-title=Documents&demo-description=This%20Document%20Starter%20Kit%20is%20developed%20with%20Next.js%2C%20Tailwind%20CSS%20and%20TypeScript.%20It%20serves%20as%20a%20flexible%20and%20scalable%20foundation%20for%20building%20documentation%20websites%20or%20content-driven%20projects.&demo-url=https%3A%2F%2Frubix-documents.vercel.app%2F&demo-image=https%3A%2F%2Fgithub.com%2Frubixvi%2Frubix-documents%2Fblob%2Fmain%2Fpublic%2Fscreens%2Fscreen-1.png)
+This guide walks you through installing **ROS 2** and setting up the **Genesys Robotics Framework** on your system.  
+Follow each step carefully to ensure a smooth setup experience.
 
 ## Prerequisites
 
 <Step>
 <StepItem title="System Requirements">
 
-- **Node.js:** Make sure you have Node.js installed. The project uses `pnpm`, which comes with Node.js. Install Node.js from here.
-- **NPM, PNPM or Yarn:** Since the project uses `pnpm` commands, ensure that pnpm is installed with Node.js. Alternatively, you can use Yarn if preferred.
+Genesys is built on top of **ROS 2**, so your system must meet the ROS 2 requirements:
 
-To verify installation, run:
+- **Operating System**:  
+  - Ubuntu 22.04 (recommended)  
+  - Ubuntu 24.04 (supported)  
+  - Windows & macOS (partial support through containers)
+- **Processor**: 64-bit Intel/AMD  
+- **RAM**: Minimum 4GB (8GB recommended)  
+- **Disk Space**: At least 5GB free
+
+To check your OS version:
 
 ```bash
-node -v
-pnpm -v
-```
+lsb_release -a
+````
+---
 
 </StepItem>
+
 <StepItem title="Git">
-You need to have Git installed to clone the repository. Download Git from [here](https://git-scm.com/).
+Git is required to clone the Genesys framework repository.
+
+Install Git:
+
+```bash
+sudo apt install git -y
+```
+
+Verify:
 
 ```bash
 git --version
 ```
 
 </StepItem>
+
 <StepItem title="Code Editor">
-You’ll need a code editor to work on the project. Common options include:
+Recommended editors:
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [WebStorm](https://www.jetbrains.com/webstorm/)
-- Any other text editor you prefer.
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [JetBrains Fleet](https://www.jetbrains.com/fleet/)
+* Any editor of your choice
 
 </StepItem>
+
 <StepItem title="Required Knowledge">
-- **Next.js:** Since this is a Next.js project, you should be familiar with Next.js basics.
-- **React:** The project uses React, so understanding React's component structure and hooks will help.
-- **TypeScript:** The project is written in TypeScript, so you should have a basic understanding of it.
-- **Tailwind:** The project uses Tailwind CSS for styling.
-- **MDX:** Markdown + JSX (MDX) is used for writing documentation.
+Before working with Genesys, you should have a basic understanding of:
+
+* **ROS 2 Core Concepts** (nodes, topics, services, actions)
+* **Python or C++** (Genesys supports both)
+* **Linux terminal usage**
+* **Robotics basics** (optional but helpful)
 
 </StepItem>
 </Step>
 
-## Installation
+---
+
+## Installing ROS 2
 
 <Step>
+
+<StepItem title="Setup Sources & Keys">
+
+```bash
+sudo apt update && sudo apt install curl gnupg lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+Add repository:
+
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu \
+$(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+```
+
+</StepItem>
+
+<StepItem title="Install ROS 2 Humble (Ubuntu 22.04)">
+Recommended for Genesys:
+
+```bash
+sudo apt update
+sudo apt install ros-humble-desktop-full
+```
+
+</StepItem>
+
+<StepItem title="Setup Environment">
+
+Source ROS 2 automatically:
+
+```bash
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
+Verify installation:
+
+```bash
+ros2 --version
+```
+
+</StepItem>
+
+</Step>
+
+---
+
+## Installing Genesys Framework
+
+<Step>
+
 <StepItem title="Clone the Repository">
-First, clone the repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/rubixvi/rubix-documents.git
-```
-
-Change the directory to the project folder:
-
-```bash
-cd rubix-documents
+git clone https://github.com/genesys-org/genesys.git
+cd genesys
 ```
 
 </StepItem>
+
 <StepItem title="Install Dependencies">
-Use npm to install all the required dependencies:
+
+Genesys uses both Python and C++ packages.
+
+### Install Python dependencies:
 
 ```bash
-pnpm install
+pip install -r requirements.txt
 ```
 
-This will install all the dependencies listed in the package.json file, including:
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- MDX components
-- Other dependencies like ESLint, PostCSS, Husky, etc.
-
-</StepItem>
-
-<StepItem title="Running the Development Server">
-Start the development server by running:
+### Install ROS 2 dependencies:
 
 ```bash
-pnpm run dev
-```
-
-This will start the local server, and you can open your browser at:
-
-```arduino
-http://localhost:3000
+rosdep update
+rosdep install --from-paths src -y --ignore-src
 ```
 
 </StepItem>
 
-<StepItem title="Editing the Project">
-  - **MDX Files:** Documentation content is stored in `contents/docs`.
-  - **Components:** You can edit React components in the `components/` directory.
-  - **Tailwind:** Tailwind styling are managed in `tailwind.config.ts` and `app/globals.css`.
+<StepItem title="Build the Workspace">
 
-To make any changes to the project, open the files in your editor and modify them as needed.
-
-<Note title="Required" type="danger">
-  The project's search functionality relies on the Husky's automation to build
-  `search-data/documents.json` ensure git commit is performed to generate this
-  file.
-</Note>
-
-</StepItem>
-<StepItem title="Building for Production">
-Once you’ve made your changes and want to build the project for production:
+Genesys uses a standard ROS 2 colcon workspace layout:
 
 ```bash
-pnpm run build
+colcon build --symlink-install
 ```
 
-This will generate a production-ready build of the app.
-
-</StepItem>
-<StepItem title="Running Production Server">
-To run the production server:
+Source it:
 
 ```bash
-pnpm run start
-```
-
-The production app will be available at:
-
-```arduino
-http://localhost:3000
+source install/setup.bash
 ```
 
 </StepItem>
+
+<StepItem title="Verify Genesys Installation">
+
+Check available Genesys packages:
+
+```bash
+ros2 pkg list | grep genesys
+```
+
+Run a demo node:
+
+```bash
+ros2 run genesys_core demo_node
+```
+
+</StepItem>
+
 </Step>
 
-## Optional
+---
+
+## Project Structure
+
+The Genesys framework installs the following structure:
+
+```
+genesys/
+ ├── src/                 # ROS 2 packages (C++ & Python)
+ ├── config/              # YAML configuration files
+ ├── launch/              # ROS 2 launch files
+ ├── worlds/              # Simulation files for Gazebo
+ ├── scripts/             # Utility scripts
+ ├── docs/                # Documentation
+ └── install/             # Built workspace
+```
+
+---
+
+## Running Genesys
 
 <Step>
-<StepItem title="Deploying to Vercel">
-This project is optimized for Vercel deployment. To deploy to Vercel:
+<StepItem title="Start the Framework">
 
-- Go to [vercel.com](https://vercel.com/) and sign up.
-- Link your GitHub repository and deploy the project.
-- Vercel will handle the build process for you automatically.
+```bash
+source install/setup.bash
+ros2 launch genesys_core bringup.launch.py
+```
+
 </StepItem>
-<StepItem title="Linting and Pre-commit Hooks">
-The project uses ESLint for linting and Husky for Git hooks. These tools are configured automatically, but you can customize them in `.eslintrc.json` and `.husky` directories.
+
+<StepItem title="Running Simulation">
+
+If you have Gazebo installed:
+
+```bash
+ros2 launch genesys_sim simulation.launch.py
+```
+
+</StepItem>
+
+<StepItem title="Running Example Robots">
+
+Examples include mobile robot, arm robot, and perception pipelines.
+
+```bash
+ros2 launch genesys_examples mobile_robot.launch.py
+```
+
 </StepItem>
 </Step>
 
-## Important Information
+---
 
-The project's search functionality relies on the Husky's automation to build `search-data/documents.json` ensure git commit is performed to generate this file.
+## Optional Tools
+
+<Step>
+
+<StepItem title="Install Gazebo (Ignition)">
+For simulation:
+
+```bash
+sudo apt install ros-humble-ros-ign-gazebo
+```
+
+</StepItem>
+
+<StepItem title="VS Code Extensions">
+
+Recommended:
+
+* ROS 2 Tools
+* Python Tools
+* C++ Intellisense
+* YAML Support
+
+</StepItem>
+
+</Step>
+
+---
+
+## Important Notes
+
+* Always build after modifying packages:
+
+  ```bash
+  colcon build
+  ```
+* Always source your workspace:
+
+  ```bash
+  source install/setup.bash
+  ```
+* Genesys requires ROS 2 Humble or newer.
+
+---
+

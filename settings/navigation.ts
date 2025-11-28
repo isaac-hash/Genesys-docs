@@ -5,13 +5,13 @@ export const Navigations = [
     title: "Docs",
     href: `/docs${PageRoutes[0].href}`,
   },
-  {
-    title: "Rubix",
-    href: "https://rubixstudios.com.au",
-    external: true,
-  },
+  // {
+  //   title: "Rubix",
+  //   href: "https://rubixstudios.com.au",
+  //   external: true,
+  // },
 ]
 
 export const GitHubLink = {
-  href: "https://github.com/rubixvi/rubix-documents",
+  href: "https://github.com/isaac-hash/Genesys",
 }

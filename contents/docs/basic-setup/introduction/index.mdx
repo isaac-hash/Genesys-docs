@@ -1,0 +1,123 @@
+---
+title: Welcome
+description: Introduction to the Genesys Framework — an opinionated, developer-friendly layer on top of ROS 2.
+keywords: ["genesys", "ros2", "framework", "robotics", "quickstart"]
+---
+# Welcome to the Genesys Framework Documentation
+
+Welcome to the official documentation for **Genesys**, an opinionated, developer-friendly framework for **ROS 2**.  
+Genesys is built to reduce boilerplate, streamline common workflows, and give you a clear “happy path” for robotics development.
+
+It wraps the powerful — but often verbose — ROS 2 toolchain into a unified, intuitive CLI so you can focus on *robot logic*, not endless setup.
+
+The goal of Genesys is **not** to replace ROS 2, but to enhance it. It provides a powerful foundation so you can focus on creating innovative features and delivering value.
+
+:::note
+**Key Principle:** Every Genesys project remains a **100% valid ROS 2 project**.  
+You can always fall back to native tools like `colcon build` and `ros2 run` at any time.
+:::
+
+---
+
+## Why Genesys?
+
+Genesys was created to solve common pain points for both new and experienced ROS 2 developers:
+
+### 🔧 Simplified Build System  
+Automates package creation, dependency management, and the entire `colcon build` process into a single:
+
+```bash
+genesys build
+```
+## ✨ Zero Boilerplate
+
+Genesys simplifies robotics development by eliminating repetitive ROS 2 boilerplate.
+
+It uses Python decorators such as:
+
+- `@node`
+- `@publisher`
+- `@subscriber`
+- `@timer`
+
+…and C++ macros to drastically simplify node and topic creation.
+
+---
+
+## ⚙️ Automated Configuration
+
+Genesys automatically generates and registers:
+
+- Launch files  
+- Configuration files  
+- Executables  
+
+No more manually editing:
+
+- `setup.py`
+- `CMakeLists.txt`
+
+Just to add or modify a node.
+
+---
+
+## 🧰 Unified Tooling
+
+Genesys provides a single, cohesive CLI:
+
+```bash
+genesys
+```
+
+- Creating new packages
+- Building workspaces
+- Running nodes
+- Launching simulations
+- Managing config files
+- Organizing your entire robotics workflow
+
+## Jump Right In
+
+<CardGrid>
+  <Card
+    title="Quickstart"
+    subtitle="👉"
+    description="New to Genesys? This is the best place to begin."
+    href="/docs/basic-setup/installation"
+  />
+  <Card
+    title="The Genesys Way"
+    subtitle="⚡"
+    description="Learn the architectural philosophy and how Genesys enhances native ROS 2 workflows."
+    href="/docs/basic-setup/introduction"
+  />
+  <Card
+    title="Command Reference"
+    subtitle="📘"
+    description="Looking for a specific command? Access the full CLI documentation."
+    href="/docs/genesys-cli/build"
+  />
+</CardGrid>
+
+Learn how each decorator simplifies ROS 2 development.
+
+## Join the Community
+
+Genesys is an open, collaborative project — and we welcome contributions!
+
+Whether you're:
+
+- Reporting a bug
+- Suggesting a feature
+- Improving the docs
+- Submitting code
+
+Your contributions help shape the future of the framework.
+
+### GitHub Repository
+
+👉 [https://github.com/isaac-hash/Genesys](https://github.com/isaac-hash/Genesys)
+
+View the source, submit PRs, or open issues.
+
+We're excited to see what you build with Genesys!
