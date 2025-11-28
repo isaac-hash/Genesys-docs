@@ -1,6 +1,7 @@
 import { PageRoutes } from "@/lib/pageroutes"
+import { NavItem } from "@/types/navigation"
 
-export const Navigations = [
+export const Navigations: NavItem[] = [
   {
     title: "Docs",
     href: `/docs${PageRoutes[0].href}`,
