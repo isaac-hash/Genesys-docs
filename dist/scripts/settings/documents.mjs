@@ -27,7 +27,7 @@ export const Documents = [
     },
     {
         title: "CLI Tooling",
-        href: "/genesys-cli",
+        href: "/new",
         heading: "Guides",
         items: [
             {
@@ -77,7 +77,7 @@ export const Documents = [
     },
     {
         title: "Dive Deeper",
-        href: "/dive-deeper",
+        href: "/decorators",
         heading: "Advanced",
         items: [
             {
