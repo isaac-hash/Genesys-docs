@@ -38,7 +38,7 @@ class MyNode:
 ### Parameters
 - **`node_name`** (str): The name of the ROS 2 node.
 
-### How It Works
+How It Works
 The `@node` decorator is responsible for creating the `NodeBase` wrapper around your class. It determines whether to create a standard `rclpy.node.Node` or a `rclpy.lifecycle.LifecycleNode` based on whether the `@lifecycle_node` decorator is also present.
 
 ---
@@ -68,10 +68,10 @@ def publish_message(self):
     return msg # This return value is published
 ```
 
-#### How It Works
+How It Works
 The `@publisher` decorator attaches metadata to the `publish_message` method. When `NodeBase` finds this, it creates a `rclpy.Publisher`. It then *wraps* the original `publish_message` method. The wrapper function calls your original method, and if the return value is not `None`, it calls `publish()` on it. The `@timer` decorator then uses this wrapped function as its callback.
 
-### `@subscriber(topic, msg_type, qos="default", debug_log=False)`
+### @subscriber
 
 Decorates a method that will be used as a callback for a topic subscription.
 
@@ -90,10 +90,10 @@ def topic_callback(self, msg: String):
     self.logger.info(f'I heard: "{msg.data}"')
 ```
 
-#### How It Works
+How It Works
 `NodeBase` discovers the `_ros_subscribers` metadata on the `topic_callback` method and calls `self.create_subscription()`, passing the method itself as the callback. If `debug_log` is enabled, it first wraps the callback in a function that logs the event.
 
-### `@timer(period_sec)`
+### @timer
 
 Decorates a method to be called at a fixed interval.
 
@@ -108,7 +108,7 @@ def periodic_task(self):
     self.logger.info('This runs every 2.5 seconds.')
 ```
 
-#### How It Works
+How It Works
 `NodeBase` finds the `_ros_timers` metadata and calls `self.create_timer()`, passing the decorated method as the callback.
 
 ### @service
@@ -170,29 +170,6 @@ def execute_nav(self, goal_handle):
 ```
 ---
 
-## Component and Lifecycle Decorators
-
-### @component
-
-A **class decorator** that marks a Python class as a ROS 2 component, making it discoverable by component containers.
-
-**Example:**
-```python
-from genesys.decorators import component, node
-
-@node('my_component_node')
-@component
-class MyImageProcessor:
-    # ... node logic using other decorators ...
-```
-
-#### How It Works
-The `@component` decorator does two things:
-1.  It sets a `__genesys_is_component__` flag on the class.
-2.  It adds a static method `get_node_factory` to your class, which is required by the `rclpy_components` infrastructure to load the node.
-
-When you use `genesys make component`, the scaffolding tool automatically adds the necessary `entry_point` to your `setup.py` file to register this component.
-
 ### @lifecycle_node
 
 A **class decorator** that transforms a standard node into a [Lifecycle Node](https://design.ros2.org/articles/node_lifecycle.html).
@@ -207,7 +184,7 @@ class MyLifecycleNode:
     # ... on_configure, on_activate, etc. callbacks ...
 ```
 
-#### How It Works
+How It Works
 This decorator simply adds an `_is_lifecycle_node` flag to the class. The main `@node` decorator checks for this flag and, if present, makes the `NodeBase` wrapper inherit from `rclpy.lifecycle.LifecycleNode` instead of the standard `rclpy.node.Node`. You are then responsible for implementing the standard lifecycle transition callbacks (e.g., `on_configure`, `on_activate`).
 
 ---
@@ -246,7 +223,7 @@ class ParameterExample:
         return String(data="Hello from a dynamic topic!")
 ```
 
-#### How It Works
+How It Works
 The `parameter()` function returns a special `Parameter` object. `NodeBase` discovers these objects during initialization. It uses the attribute's name (`timer_period`) and type hint (`float`) to call `self.declare_parameter()`. It also sets up a callback so that if the ROS 2 parameter is changed externally (e.g., with `ros2 param set`), the attribute `self.timer_period` on your class instance is **automatically updated**.
 
 ### action_client(name, action_type)
@@ -277,7 +254,7 @@ class MyActionClient:
         self.nav_client.send_goal_async(goal_msg)
 ```
 
-#### How It Works
+How It Works
 Similar to `parameter()`, `action_client()` returns a placeholder object. `NodeBase` finds this placeholder, creates a real `rclpy.action.ActionClient`, and replaces the placeholder attribute (`self.nav_client`) with the actual, ready-to-use client.
 
 ---
