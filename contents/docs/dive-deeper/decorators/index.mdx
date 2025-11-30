@@ -30,7 +30,7 @@ This is the main entry point for creating a Genesys node. It must be applied to 
 ```python
 from genesys.decorators import node
 
-@node('my_first_node')
+@node
 class MyNode:
     # ... your logic here ...
 ```
@@ -47,7 +47,7 @@ The `@node` decorator is responsible for creating the `NodeBase` wrapper around 
 
 These decorators are used on methods within your `@node`-decorated class to set up ROS 2 communication channels.
 
-### `@publisher(topic, msg_type, qos="default")`
+### @publisher
 
 Decorates a method that produces messages. The decorated method's return value will be automatically published to the specified topic.
 
@@ -111,7 +111,7 @@ def periodic_task(self):
 #### How It Works
 `NodeBase` finds the `_ros_timers` metadata and calls `self.create_timer()`, passing the decorated method as the callback.
 
-### `@service(service_name, service_type)`
+### @service
 
 Decorates a method to act as a callback for a ROS 2 service. The method signature must include `request` and `response` arguments.
 
@@ -131,7 +131,7 @@ def service_callback(self, request: SetBool.Request, response: SetBool.Response)
     return response # Must return the response object
 ```
 
-### `@action_server(action_name, action_type)`
+### @action_server
 
 Decorates a method to act as the `execute_callback` for a ROS 2 action server.
 
@@ -172,7 +172,7 @@ def execute_nav(self, goal_handle):
 
 ## Component and Lifecycle Decorators
 
-### `@component`
+### @component
 
 A **class decorator** that marks a Python class as a ROS 2 component, making it discoverable by component containers.
 
@@ -193,7 +193,7 @@ The `@component` decorator does two things:
 
 When you use `genesys make component`, the scaffolding tool automatically adds the necessary `entry_point` to your `setup.py` file to register this component.
 
-### `@lifecycle_node`
+### @lifecycle_node
 
 A **class decorator** that transforms a standard node into a [Lifecycle Node](https://design.ros2.org/articles/node_lifecycle.html).
 
@@ -216,7 +216,7 @@ This decorator simply adds an `_is_lifecycle_node` flag to the class. The main `
 
 Besides decorators, Genesys provides functions to declaratively create attributes like parameters and action clients.
 
-### `parameter(name, default_value=None)`
+### parameter
 
 Declares a ROS 2 parameter as a class attribute.
 
@@ -249,7 +249,7 @@ class ParameterExample:
 #### How It Works
 The `parameter()` function returns a special `Parameter` object. `NodeBase` discovers these objects during initialization. It uses the attribute's name (`timer_period`) and type hint (`float`) to call `self.declare_parameter()`. It also sets up a callback so that if the ROS 2 parameter is changed externally (e.g., with `ros2 param set`), the attribute `self.timer_period` on your class instance is **automatically updated**.
 
-### `action_client(name, action_type)`
+### action_client(name, action_type)
 
 Declares a ROS 2 action client as a class attribute.
 

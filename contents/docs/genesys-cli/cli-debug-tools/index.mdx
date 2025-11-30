@@ -22,11 +22,11 @@ genesys param get /my_node my_param
 
 ## Available Command Groups
 
-### `genesys node`
+### genesys node
 - `list`: List all running nodes.
 - `info <node_name>`: Get information about a specific node.
 
-### `genesys topic`
+### genesys topic
 - `list`: List all active topics.
 - `info <topic_name>`: Get information about a specific topic.
 - `echo <topic_name>`: Echo messages from a topic.
@@ -36,20 +36,20 @@ genesys param get /my_node my_param
 - `record [topics...]`: Record topics to a bag file. Records all topics if none are specified.
 - `replay <bag_file>`: Play back a bag file.
 
-### `genesys service`
+### genesys service
 - `list`: List all active services.
 - `type <srv_name>`: Get the type of a service.
 - `info <srv_name>`: Get information about a specific service.
 - `find <srv_type>`: Find services by service type.
 - `call <srv_name> <srv_type> [args]`: Call a service with the given arguments.
 
-### `genesys action`
+### genesys action
 - `list`: List all active actions.
 - `type <action_name>`: Get the type of an action.
 - `info <action_name>`: Get information about a specific action.
 - `send_goal <action_name> <action_type> [args]`: Send a goal to an action server.
 
-### `genesys param`
+### genesys param
 - `list [node_name]`: List parameters for a specific node or all nodes.
 - `get <node_name> <param_name>`: Get a parameter from a node.
 - `set <node_name> <param_name> <value>`: Set a parameter on a node.

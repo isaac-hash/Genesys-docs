@@ -18,7 +18,7 @@ The following macros are designed to generate entire C++ class definitions and, 
 
 ---
 
-### `ROS_NODE_CLASS(NODE_NAME)`
+### ROS_NODE_CLASS(NODE_NAME)
 
 -   **Header**: `PublisherMacro.hpp`
 -   **Purpose**: Creates a minimal `rclcpp::Node` class. It generates a constructor that logs a startup message.
@@ -44,7 +44,7 @@ The following macros are designed to generate entire C++ class definitions and, 
 
 ---
 
-### `ROS_NODE_WITH_TIMER(NODE_NAME, TIMER_MS, CALLBACK_FN)`
+### ROS_NODE_WITH_TIMER
 
 -   **Header**: `PublisherMacro.hpp`
 -   **Purpose**: Generates a node containing a recurring wall timer that triggers a callback function.
@@ -72,7 +72,7 @@ The following macros are designed to generate entire C++ class definitions and, 
 
 ---
 
-### `ROS_PUBLISHING_NODE(NODE_NAME, TOPIC, MSG_TYPE, TIMER_MS, CALLBACK_FN)`
+### ROS_PUBLISHING_NODE
 
 -   **Header**: `PublisherMacro.hpp`
 -   **Purpose**: Generates a node that includes a publisher and a timer. The timer's callback is intended to be used for publishing messages.
@@ -102,7 +102,7 @@ The following macros are designed to generate entire C++ class definitions and, 
 
 ---
 
-### `ROS_UNIVERSAL_NODE(NODE_NAME, DECLARATIONS, INITIALIZERS)`
+### ROS_UNIVERSAL_NODE
 
 -   **Header**: `SubscriberMacro.hpp`
 -   **Purpose**: A highly flexible macro for defining a node with custom member variables and constructor logic. It is particularly useful for creating subscribers or other complex nodes.
@@ -138,7 +138,7 @@ The following macros are designed to generate entire C++ class definitions and, 
 
 ---
 
-### `ROS_NODE_MAIN(NODE_NAME)`
+### ROS_NODE_MAIN
 
 -   **Header**: `PublisherMacro.hpp`
 -   **Purpose**: Generates the standard `main()` function entrypoint needed to run a ROS 2 node. It handles `rclcpp::init`, `rclcpp::spin`, and `rclcpp::shutdown`.
