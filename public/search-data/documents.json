@@ -83,17 +83,12 @@
     "slug": "/basic-setup/installation",
     "title": "Installation",
     "description": "Learn how to install ROS 2 and set up the Genesys Robotics Framework on your system.",
-    "content": "This guide walks you through installing **ROS 2** and setting up the **Genesys Robotics Framework** on your system.\\\nFollow each step carefully to ensure a smooth setup experience.\n\n## Prerequisites\n\n***\n\n## Installing ROS 2\n\n***\n\n## Installing Genesys Framework\n\n***\n\n## Project Structure\n\nThe Genesys framework installs the following structure:\n\n```\ngenesys/\r\n ├── src/                 # ROS 2 packages (C++ & Python)\r\n ├── config/              # YAML configuration files\r\n ├── launch/              # ROS 2 launch files\r\n ├── worlds/              # Simulation files for Gazebo\r\n ├── scripts/             # Utility scripts\r\n ├── docs/                # Documentation\r\n └── install/             # Built workspace\n```\n\n***\n\n## Running Genesys\n\n***\n\n## Optional Tools\n\n***\n\n## Important Notes\n\n* Always build after modifying packages:\n\n  ```bash\n  colcon build\n  ```\n* Always source your workspace:\n\n  ```bash\n  source install/setup.bash\n  ```\n* Genesys requires ROS 2 Humble or newer.\n\n***\n",
+    "content": "This guide walks you through installing **ROS 2** and setting up the **Genesys Robotics Framework** on your system.\\\nFollow each step carefully to ensure a smooth setup experience.\n\n## Prerequisites\n\n***\n\n## Installing ROS 2\n\n***\n",
     "_searchMeta": {
-      "cleanContent": "this guide walks you through installing ros 2 and setting up the genesys robotics framework on your system follow each step carefully to ensure a smooth setup experience prerequisites installing ros 2 installing genesys framework project structure the genesys framework installs the following structure: running genesys optional tools important notes always build after modifying packages: always source your workspace: genesys requires ros 2 humble or newer",
+      "cleanContent": "this guide walks you through installing ros 2 and setting up the genesys robotics framework on your system follow each step carefully to ensure a smooth setup experience prerequisites installing ros 2",
       "headings": [
         "Prerequisites",
-        "Installing ROS 2",
-        "Installing Genesys Framework",
-        "Project Structure",
-        "Running Genesys",
-        "Optional Tools",
-        "Important Notes"
+        "Installing ROS 2"
       ],
       "keywords": [
         "ros2",
@@ -104,21 +99,9 @@
         "setup",
         "Prerequisites",
         "Installing ROS 2",
-        "Installing Genesys Framework",
-        "Project Structure",
-        "Running Genesys",
-        "Optional Tools",
-        "Important Notes",
         "ROS 2",
         "Genesys Robotics Framework",
-        "## Installing ROS 2",
-        "## Project Structure\n\nThe Genesys framework installs the following structure:\n\n```\ngenesys/\r\n ├── src/                 # ROS 2 packages (C++ & Python)\r\n ├── config/              # YAML configuration files\r\n ├── launch/              # ROS 2 launch files\r\n ├── worlds/              # Simulation files for Gazebo\r\n ├── scripts/             # Utility scripts\r\n ├── docs/                # Documentation\r\n └── install/             # Built workspace\n```",
-        "## Optional Tools",
-        "genesys/\r\n ├── src/                 # ROS 2 packages (C++ & Python)\r\n ├── config/              # YAML configuration files\r\n ├── launch/              # ROS 2 launch files\r\n ├── worlds/              # Simulation files for Gazebo\r\n ├── scripts/             # Utility scripts\r\n ├── docs/                # Documentation\r\n └── install/             # Built workspace",
-        "***\n\n## Running Genesys\n\n***\n\n## Optional Tools\n\n***\n\n## Important Notes\n\n* Always build after modifying packages:",
-        "bash\n  colcon build",
-        "* Always source your workspace:",
-        "bash\n  source install/setup.bash"
+        "## Installing ROS 2"
       ]
     }
   },
