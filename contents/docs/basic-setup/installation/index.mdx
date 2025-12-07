@@ -121,8 +121,6 @@ ros2 --version
 </Step>
 
 ---
-<Step>
-<StepItem title="Genesys Installation">
 
 ## Genesys Installation
 
@@ -135,18 +133,18 @@ This guide will walk you through the "happy path" of creating a complete ROS 2 p
 
 Let's get started!
 
-### Prerequisites
+<Step>
+
+<StepItem title="Prerequisites">
 
 Before you begin, please ensure you have the following set up:
 
 - **A ROS 2 Distribution**: Genesys requires an installed ROS 2 distribution (like Humble or Iron).
 - **ROS_DISTRO Environment Variable**: Make sure this variable is set. You can check it with `echo $ROS_DISTRO`.
 
-### Step 1: Installation and Setup
+</StepItem>
 
-Before you can create a project, you need to install the Genesys CLI and ensure your environment is correctly configured.
-
-#### 1. Check ROS 2 Environment
+<StepItem title="Check ROS 2 Environment">
 
 First, make sure you have a ROS 2 distribution (like Humble or Iron) sourced and the ROS_DISTRO environment variable is set. You can check it with:
 
@@ -156,7 +154,9 @@ echo $ROS_DISTRO
 
 If this command doesn't print your ROS 2 version (e.g., `humble`), you'll need to source your ROS 2 setup file (e.g., `source /opt/ros/humble/setup.bash`).
 
-#### 2. Install the Genesys CLI
+</StepItem>
+
+<StepItem title="Install the Genesys CLI">
 
 Install the framework's command-line interface using pip. The `setup.py` file defines the package name `genesys-framework-cli`.
 
@@ -164,7 +164,9 @@ Install the framework's command-line interface using pip. The `setup.py` file de
 pip install genesys-framework-cli
 ```
 
-#### 3. Update Your PATH
+</StepItem>
+
+<StepItem title="Update Your PATH">
 
 The pip command often installs executables in a local directory that isn't in your system's PATH by default. To make the `genesys` command available everywhere, you need to add this directory to your PATH.
 
@@ -180,7 +182,9 @@ For a permanent change, add this line to your shell's startup file (e.g., `.bash
 echo 'export PATH="$(python3 -m site --user-base)/bin:$PATH"' >> ~/.bashrc
 ```
 
-#### 4. Verify Your Setup
+</StepItem>
+
+<StepItem title="Verify Your Setup">
 
 In a new terminal, run the Genesys doctor to check that everything is configured correctly:
 
@@ -190,7 +194,9 @@ genesys doctor
 
 If all checks pass with a green light, you're ready to build your first project!
 
-### Step 2: Create a New Workspace
+</StepItem>
+
+<StepItem title="Create a New Workspace">
 
 Now that the CLI is installed, let's create a new project workspace. This command scaffolds a standard directory structure for you.
 
@@ -201,7 +207,9 @@ cd my_robot_ws
 
 This creates a `my_robot_ws` directory containing `src/`, `launch/`, `config/`, and other standard ROS 2 folders.
 
-### Step 3: Create a Package and a Node
+</StepItem>
+
+<StepItem title="Create a Package and a Node">
 
 Next, let's generate a Python package and a simple publisher node inside it. The `--with-node` flag tells Genesys to create a default node right after creating the package.
 
@@ -219,7 +227,9 @@ The interactive wizard will guide you. When it's done, Genesys will have automat
 - Registered the node as an executable in `setup.py`.
 - Generated a launch file at `launch/demo_pkg_launch.py` to run your new node.
 
-### Step 4: Build the Workspace
+</StepItem>
+
+<StepItem title="Build the Workspace">
 
 With our code generated, it's time to build the project. The `build` command is a powerful wrapper around the standard ROS 2 tools.
 
@@ -229,7 +239,9 @@ genesys build
 
 This single command runs `colcon build` and automatically sources the `install/setup.bash` file, making your new executables available in your current terminal.
 
-### Step 5: Run Your Node
+</StepItem>
+
+<StepItem title="Run Your Node">
 
 Finally, let's run the node. With Genesys, you don't need to remember which package a node belongs to.
 
@@ -243,11 +255,12 @@ You should see output in your terminal as the node publishes messages. To see th
 genesys topic echo /chatter
 ```
 
----
 </StepItem>
 
-### Congratulations!
+<StepItem title="Congratulations!">
 
 You have successfully installed Genesys, created, built, and run your first ROS 2 application. You've seen how the unified CLI and auto-generation tools can significantly speed up your development workflow.
+
+</StepItem>
 
 </Step>
