@@ -83,12 +83,13 @@
     "slug": "/basic-setup/installation",
     "title": "Installation",
     "description": "Learn how to install ROS 2 and set up the Genesys Robotics Framework on your system.",
-    "content": "This guide walks you through installing **ROS 2** and setting up the **Genesys Robotics Framework** on your system.\\\nFollow each step carefully to ensure a smooth setup experience.\n\n## Prerequisites\n\n***\n\n## Installing ROS 2\n\n***\n",
+    "content": "This guide walks you through installing **ROS 2** and setting up the **Genesys Robotics Framework** on your system.\\\nFollow each step carefully to ensure a smooth setup experience.\n\n## Prerequisites\n\n***\n\n## Installing ROS 2\n\n***\n\n## Genesys Installation\n\nThis guide will walk you through the \"happy path\" of creating a complete ROS 2 project from scratch. In just a few minutes, you will:\n\n* Create a new, structured workspace.\n* Generate a ROS 2 package and a publisher node inside it.\n* Build your project with a single command.\n* Run your new node.\n\nLet's get started!\n",
     "_searchMeta": {
-      "cleanContent": "this guide walks you through installing ros 2 and setting up the genesys robotics framework on your system follow each step carefully to ensure a smooth setup experience prerequisites installing ros 2",
+      "cleanContent": "this guide walks you through installing ros 2 and setting up the genesys robotics framework on your system follow each step carefully to ensure a smooth setup experience prerequisites installing ros 2 genesys installation this guide will walk you through the happy path of creating a complete ros 2 project from scratch in just a few minutes you will: create a new structured workspace generate a ros 2 package and a publisher node inside it build your project with a single command run your new node let s get started",
       "headings": [
         "Prerequisites",
-        "Installing ROS 2"
+        "Installing ROS 2",
+        "Genesys Installation"
       ],
       "keywords": [
         "ros2",
@@ -99,6 +100,7 @@
         "setup",
         "Prerequisites",
         "Installing ROS 2",
+        "Genesys Installation",
         "ROS 2",
         "Genesys Robotics Framework",
         "## Installing ROS 2"
